@@ -1,1 +1,37 @@
 use hash map for O(n) complexity
+
+https://leetcode.com/problems/two-sum/description/
+
+This code block completes the Two Sum algorithm using a hash map (unordered_map in C++). 
+It checks if the complement exists in the map, and if found, returns the pair of indices.
+Otherwise, it adds the current number and its index to the map.
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> num_map;
+        int n = nums.size();
+        
+        for (int i = 0; i < n; i++) {
+            int complement = target - nums[i];
+            if (num_map.find(complement) != num_map.end()) {
+                return {num_map[complement], i};
+            }
+            num_map[nums[i]] = i;
+        }
+        
+        return {}; // Return empty vector if no solution found
+    }
+};
+
+When to use complements with hash maps:
+
+1. Sum problems: Like Two Sum, Three Sum, or any variant where you're looking for elements that add up to a target.
+2. Pair matching: When you need to find pairs of elements that satisfy a certain condition.
+3. Difference problems: When you're looking for elements with a specific difference.
+
+When you might not use complements with hash maps:
+
+1. Frequency counting: When you're simply counting occurrences of elements.
+2. Indexing or caching: When you're using a hash map to store and quickly retrieve values.
+3. Grouping or categorizing: When you're using a hash map to group elements by some property.
